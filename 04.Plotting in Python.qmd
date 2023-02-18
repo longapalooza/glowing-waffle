@@ -1,0 +1,478 @@
+---
+title: 04.Plotting In Python
+date-modified: last-modified
+date-format: 'dd YYYY-MM-DD HH:mm'
+editor:
+    markdown: 
+        canonical: true
+execute:
+    echo: False
+fig-cap-location: top
+format:
+    html:
+      code-line-numbers: true
+      css: css/styles.css
+      fig-align: center
+      toc: true
+jupyter: python3
+---
+
+```{python}
+from quarto_glu import *
+```
+
+## matplotlib
+
+Python is a very capable programming language on its own. However, Python's real power comes from the community that writes and supports various libraries (in Python libraries are often call packages) that add functionality to the language. One such library is matplotlib. [matplotlib](https://matplotlib.org/) is a Python library built to produced 2D publication-quality plots. Some examples are shown below in @fig-matplotlib-examples.
+
+![matplotlib Examples](img/matplotlib_examples.png){#fig-matplotlib-examples fig-alt="matplotlib Examples" width="8.5in"}
+
+It is a free and open-source library released under the <a href="https://docs.python.org/3/license.html" target="_blank">Python Software Foundation (PSF) license</a>. To utilize the library, you must install it. There are several ways in which Python libraries may be installed, but the most common is to use the Python package manager called pip. Owhats I've made a mistake
+
+The following command may be used in a command prompt to install matplotlib via pip.
+
+`python -m pip install -U matplotlib`
+
+However, this is not the method that will be used with Thonny. Thonny provides a convenient graphical user interface (GUI) for installing Python packages or libraries.
+
+To install matplotlib in Thonny, navigate to `Tools > Manage Packages...` as shown below in @fig-thonny-manage-packages.
+
+![Tools \> Manage Packages\...](img/thonny_manage_packages.PNG){#fig-thonny-manage-packages fig-alt="Tools > Manage Packages..." width="4in"}
+
+Once the `Manage packages...` dialog has appeared, you may search for matplotlib. Searching for matplotlib is shown below in @fig-thonny-matplotlib-search.
+
+![Tools \> Manage Packages\..., Search for matplotlib](img/thonny_matplotlib_search.gif){#fig-thonny-matplotlib-search fig-alt="Tools > Manage Packages..., Search for matplotlib" width="4in"}
+
+Thonny's package manager will now search for the matplotlib package. Sometimes the search may take a little while, so be patient. The package manager does not have any indication that it is working, but it is. Once the package is found, the package manager should look like it is shown in @fig-install-matplotlib.
+
+![Install matplotlib](img/thonny_matplotlib_install.gif){#fig-install-matplotlib fig-alt="Install matplotlib" width="4in"}
+
+You can install the package by selecting `Install`. It may take a little while to install the library, but it should display a message that indicates that it is complete when it finishes. Installing the package must be done only once. You do not have to do this every time you want to use this library in a script.
+
+## Examples
+
+### Simple Line Plot
+
+The first example we will do is a simple line plot. To include the matplotlib library in your script, you must use the `import` keyword. The `import` keyword is used below.
+
+```{python}
+#| echo: True
+
+import matplotlib.pyplot as plt
+
+```
+
+Let us take a closer look at this statement. First, there is the `import` keyword. The `import` keyword tells Python that we want to include or import the package or library of whatever follows the keyword (in this case, it is the matplotlib library). The `.pyplot` behind matplotlib is needed here because it is a subcategory of the matplotlib library. matplotlib has a lot of functionality with a lot of different applications and use cases. pyplot is one of these. Without going into great detail about the inner workings of matplotlib, just After Python is told what library to include, there is the `as` keyword followed by `plt`. The `as` keyword imports or includes the library as a particular variable (in this case, the variable is `plt`). So whenever we want to reference or refer to the matplotlib library, we can use the variable `plt`. Any unique variable could have been used in place of `plt`. However, most, if not all, the examples on matplotlib's website use the `plt` variable, and so for consistency, `plt` will be used. As a good practice, import statements are typically always included at the beginning of your script. Including import statements at the beginning of a script makes it clear to anyone viewing the script later (including yourself) what libraries are needed for the script. At this time, some data to plot is required. Some data is shown below as the list variables `x` and `y`.
+
+```{python}
+#| echo: True
+
+x = [1, 2, 3]
+y = [2, 4, 1]
+
+```
+
+Now that we have some data to plot, the actual plot may be created. The plot is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.plot(x, y)
+
+plt.show()
+
+```
+
+Let's take these statements apart. Starting with the first line, let's begin with what we have seen before, the variable `plt`. The `plt` variable is us referring to the matplotlib library that we previously imported. Again, this variable could have been named any unique name, but it is `plt` for this example. Following the variable `plt`, is the function `subplots()`. The function `subplots()` may be used in many ways, but in this example, the numbers 1 and 1 tell matplotlib that we want to create a figure with 1 row and 1 column worth of plots (i.e., only one plot). matplotlib has the capabilities of creating figures with multiple plots within one figure (for example, see [here](https://matplotlib.org/gallery/lines_bars_and_markers/eventplot_demo.html#sphx-glr-gallery-lines-bars-and-markers-eventplot-demo-py)).
+
+------------------------------------------------------------------------
+
+> Before discussing the left-hand side of the statement above, a brief detour of some matplotlib's terminology is in order. matplotlib refers to the entire plotting canvas (where everything is placed) by the term figure. There is always one and only one figure. Axes are what you typically think of when you think of a plot. An axes is the container with the lines, markers, legend, numbers, labels, etc. A figure can contain an axes or multiple axes. In the example, the link provided previously, the figure included four axes, while the example above only consists of 1 axes. Shown below in @fig-matplotlib-figure-hierarchy is matplotlib's figure hierarchy.
+>
+> ![[matplotlib figure hierarchy](https://matplotlib.org/1.5.1/faq/usage_faq.html#parts-of-a-figure)](img/matplotlib_figure_hierarchy.png){#fig-matplotlib-figure-hierarchy fig-alt="matplotlib figure hierarchy" width="4in"}
+>
+> As seen in @fig-matplotlib-figure-hierarchy, the red box represents the figure as a whole (you can have only one figure), the blue box represents the plot, which are called axes by matplotlib (you can have multiple axes), and the green circles refer to each plot axis (the x and y). These terms can be a point of confusion for a newcomer to matplotlib, so it is helpful to clarify the exact terminology that you may come across in various matplotlib examples.
+
+------------------------------------------------------------------------
+
+Now that some terminology has been established, the left-hand side of the first line of the previous Python statements may be discussed. The left-hand side defines two different variables by the name of `fig` and `ax`. These variables allow us to be interactive with the figure and axes, respectively. Often variables like these are called handles. They are the figure and axes handles. The variable `plt` could be called the library handle. Handles are variables that allow for the interaction and manipulation of various elements of a particular Python script. Like the `plt` variable, the `fig`, and `ax` variables may be named any unique name, but quite often (as in the matplotlib examples), they are named `fig`, and `ax`. Once the figure and axes handles have been defined, adding particular elements may be accomplished using these handles. The second line adds the data to the empty axes using the `plot()` function. The `plot()` function expects at least two arguments, the independent data (the x values) and the dependent data (the y values). Finally, the last line shows the plot. Without this final line, we would never see the plot even though all the data was added. This `show()` function should always be the last statement before a plot is shown. If you modify the figure or axes after the `show()` function is used, you will not see those changes. This plot is all well and good, but a plot without labels is no plot at all. To add axes labels, the `set_xlabel()`, `set_ylabel()`, and `set_title()` functions may be used. Using these functions is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.plot(x, y)
+
+ax.set_xlabel('x - axis')
+ax.set_ylabel('y - axis')
+ax.set_title('My first graph!')
+
+plt.show()
+
+```
+
+### Multiple Series Line Plot
+
+For the next example, let's create another line plot, but there will be two series (or lines) on a single plot. First, some data to be plotted must be made. The data is shown below.
+
+```{python}
+#| echo: True
+
+x1 = [1, 2, 3]
+y1 = [2, 4, 1]
+
+x2 = [1, 2, 3]
+y2 = [4, 1, 3]
+
+```
+
+Next, the plot may be created. The plot is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.plot(x1, y1, label='Series 1')
+ax.plot(x2, y2, label='Series 2')
+
+ax.set_xlabel('x - axis')
+ax.set_ylabel('y - axis')
+ax.set_title('Two series on the same graph!')
+
+ax.legend()
+
+plt.show()
+
+```
+
+Some key things should be pointed out. Each additional series is added to the plot using the `plot()` function on the axes handle `ax`. Since there are multiple series on the plot, it is always good to include a legend to tell the plots apart. The `label` argument is used with the `plot()` function to add a legend. This argument expects the value to be a string of what to be displayed in the legend box. The `legend()` function must be used with the axes handle `ax` to display the legend box. Using the `legend()` function is typically done right before the plot is shown but does not have to be.
+
+### Advanced Styling of Line Plots
+
+At this point, you may be wondering how to style the plot so you can set the various aspects of the plot to your liking. First, let's define some data to plot. The data is shown below.
+
+```{python}
+#| echo: True
+
+x = [1, 2, 3, 4, 5, 6]
+y = [2, 4, 1, 5, 2, 6]
+
+```
+
+The data may now be plotted. The plot is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.plot(x, y, color='green', linestyle='dashed', linewidth=3, marker='o',
+        markerfacecolor='blue', markersize=12)
+
+ax.set_xlim(1, 8)
+ax.set_ylim(1, 8)
+
+ax.set_xlabel('x - axis')
+ax.set_ylabel('y - axis')
+ax.set_title('Some cool customizations!')
+
+plt.show()
+
+```
+
+Various arguments may be used with the `plot()` function to style particular aspects of a series. The list below details the different arguments used above.
+
+-   `color` - This sets the color of the line. A list of named colors may be found [here](https://matplotlib.org/stable/gallery/color/named_colors.html#list-of-named-colors). There are other formats that matplotlib accepts as colors, too (i.e., RGB, hex code, shortcodes, etc.). They are discussed [here](https://matplotlib.org/stable/tutorials/colors/colors.html).
+
+-   `linestyle` - This sets the style of the line. The default value is solid. A list of various line styles is listed [here](https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html).
+
+-   `linewidth` - This is the width or weight of the line. It expects a positive float value.
+
+-   `marker` - This is the marker or data point shape. By default, this is set to none. A list of the various marker shapes may be found [here](https://matplotlib.org/stable/api/markers_api.html).
+
+-   `markerfacecolor` - This is the color of the marker shape. It expects a named color or one of the various color formats similar to the `color` argument.
+
+-   `markersize` - This is the relative size of the marker shape. It expects a positive float value.
+
+In addition to styling the series, the x and y-axis may be styled too. This is done with the `set_xlim()`, and `set_ylim()` functions. These set the limits of the x and y-axis, respectively. matplotlib is very powerful in regards to styling customization. Shown below in @fig-matplotlib-figure-elements are some more of the various styling options.
+
+![[matplotlib figure elements](https://matplotlib.org/stable/gallery/showcase/anatomy.html#sphx-glr-gallery-showcase-anatomy-py)](img/matplotlib_figure_elements.png){#fig-matplotlib-figure-elements fig-alt="matplotlib figure elements" width="4in"}
+
+Also, fun fact, while I did not create this figure, the creator of the figure did all this styling with matplotlib only. See the code [here](https://matplotlib.org/stable/gallery/showcase/anatomy.html). To see all the available options for the `plot()` function, see [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html).
+
+### Bar Plots
+
+Different types of plots may be created with matplotlib. A [bar plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.bar.html) is one such plot. To demonstrate the use of a bar plot, let's start with some data. The data is shown below.
+
+```{python}
+#| echo: True
+
+x = [1, 2, 3, 4, 5]
+height = [10, 24, 36, 40, 5] # i.e. the y values
+bar_labels = ['dogs', 'cats', 'fishes', 'birds', 'lizards']
+
+```
+
+The `x` and `height` variables are the x and y values of the plotted data. The `bar_labels` variable will be used to change the x-axis labels so that the pet names will be displayed instead of the numeric values 1, 2, 3, 4, and 5. The bar plot may now be created, as shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.bar(x, height, tick_label=bar_labels, width=0.8, color=['red', 'green'])
+
+ax.set_xlabel('Pets')
+ax.set_ylabel('Number of Pets')
+ax.set_title('My bar chart!')
+
+plt.show()
+
+```
+
+Instead of using the `plot()` as in the case of a line plot, the `bar()` function is used. The `bar()` function at a minimum takes two arguments, the x and y values of the data to be plotted. In addition to those two arguments a few more have been used in the above code. The details of these other arguments are listed below.
+
+-   `tick_label` - This specifies the label along the x-axis. It must be a collection (something like a list) that contains the message to be displayed at each x value.
+
+-   `width` - This is the relative width of each of the bar of the plot. A width of 0.8 tells matplotlib that the bars should be 80% of the available width. A width of 0.8 produces gaps between the bars. If this argument were not given (the default value is 1), the bars would be right next to one another without any gaps.
+
+-   `color` - This is a collection (something like a list) containing the particular bars' colors. If the collection is smaller, then the number of bars (as in this example), the colors are repeated. This is why there is an alternating pattern of red and green for the bars.
+
+### Histogram
+
+A [histogram](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html) is a special type of bar plot in which the frequency of a particular value is shown using a bar. A histogram is how grades for a class are typically represented. To create a histogram in matplotlib is very simple because matplotlib does all the hard work for us. To demonstrate the creation of a histogram in matplotlib, let's first create some data to plot. The data is shown below with a list of different ages.
+
+```{python}
+#| echo: True
+
+ages = [2, 5, 70, 40, 30, 45, 50, 45, 43, 40, 44, 60, 7, 13, 57, 18, 90, 77,
+        32, 21, 20, 40]
+
+```
+
+In addition to the ages that the histogram will be created from, a couple of other arguments are needed. The first is the expected range of values, and the second is the number of intervals to divide that range. These two arguments are shown below as variables `r` and `bins`.
+
+```{python}
+#| echo: True
+
+r = [0, 100]
+bins = 10
+
+```
+
+The range of ages is expected to be between 0 and 100 years old (as set by `r`). The number of subintervals of the range is 10 (as specified by `bins`). Often this term is called a bin, and it will determine how many bars there could be. The histogram may now be created. The histogram is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.hist(ages, bins, r, color='green', histtype='bar', rwidth=0.8)
+
+ax.set_xlim(r)
+
+ax.set_xlabel('Age')
+ax.set_ylabel('Number of people')
+ax.set_title('My histogram')
+
+plt.show()
+
+```
+
+It may be seen that each bar's height represents how often an age in the bar's interval occurs. For example, there are three different ages in the data that are between 0 and 10. Unlike the `bar()` function, the `hist()` function only actually requires one argument. The only required argument is the first one, the data. From the data, matplotlib can construct a histogram. However, the example above shows the addition of several more arguments. The next two, `bins` and `r`, tell matplotlib the number of bins and the range to use. Then there are the other arguments `color`, `histtype`, and `rwidth`. The `color` argument is just like any other `color` argument seen so far. The `histtype` argument specifies the style of the histogram bars. The available options are `bar`, `barstacked`, `step`, and `stepfilled`. To read more about the different options, see [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html). Lastly, the `rwidth` argument specifies the width of the bars of the histogram. For the example above, the bars are 80% of the available width. Just like the bar plot example, this produces gaps between the bars.
+
+### Scatter Plot
+
+A matplotlib [scatter plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html) is very similar to a matplotlib line plot except that there are no lines. It only has markers. Let's create some data to demonstrate it's use. The data is shown below.
+
+```{python}
+#| echo: True
+
+x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+y = [2, 4, 5, 7, 6, 8, 9, 11, 12, 12]
+
+```
+
+The scatter plot may now be created. The plot is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.scatter(x, y, color='green', marker='*', s=30)
+
+ax.set_xlabel('x – axis')
+ax.set_ylabel('y – axis')
+ax.set_title('My scatter plot!')
+
+plt.show()
+
+```
+
+The critical function being used here is the `scatter()` function. The argument that hasn't been seen yet in the `scatter()` function is the `s` argument. The `s` argument is the size of the marker. This argument is similar to the `markersize` argument in the `plot()` function.
+
+### Pie Chart
+
+matplotlib is also capable of quickly creating a pie chart. Let's make some data that represent the daily activities of a college student. The data is shown below.
+
+```{python}
+#| echo: True
+
+activities = ['eat', 'sleep', 'work', 'play']
+time_spent = [3, 7, 8, 6]
+
+```
+
+Shown above are the student's various activities in the variable `activities` and the number of hours spent doing each activity in `time_spent`. Before the pie chart is created, let's define another variable that will specify each [here](https://en.wikipedia.org/wiki/Circular_sector) of the pie chart's colors. The sector colors are shown below.
+
+```{python}
+#| echo: True
+
+sector_colors = ['r', 'y', 'g', 'b']
+
+```
+
+There are four colors listed in the variable `sector_colors` used for the four activities. The colors used here are not named colors but color shorthand codes. The color shorthand codes are listed [here](https://matplotlib.org/stable/tutorials/colors/colors.html). Now the pie chart may be created. The pie chart is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(1, 1)
+
+ax.pie(time_spent, labels=activities, colors=sector_colors, startangle=90,
+       shadow=True, explode=[0, 0, 0.1, 0], radius=1.2, autopct='%1.1f%%')
+
+ax.legend()
+
+plt.show()
+
+```
+
+The function to create the pie chart is `pie()`. The `pie()` function can take many different arguments, but those that haven't been seen before are listed below.
+
+-   `startangle` - This specifies the starting angle in degrees of the pie chart. The interface between eat and play is at $90 ^\circ$, which is where the pie chart starts.
+
+-   `shadow` - This is a boolean (i.e., True or False) value that specifies if the pie chart should have a shadow effect or not.
+
+-   `explode` - This is a collection (like a list) that specifies how much the sector should be removed or exploded from the pie chart. All the values are 0, except for the third one. The third one corresponds to the work activity (the green one). The non-zero value is why it is slightly removed from the pie chart. The number given here represent the percent of the pie chart's radius to remove the sector. For this example, the work activity is removed 10% of the pie chart's radius. This option is typically used to highlight important aspects of a pie chart. It brings attention to a particular sector of a pie chart.
+
+-   `radius` - This is a float value that specifies the radius of the pie chart.
+
+-   `autopct` - This tells matplotlib to automatically calculate and display each sector's percentage instead of the numeric value. The format of the percentage is given by `%1.1f%%`. This type of notation is known as a format string. Without going into great detail about the specifics of a format string, just known `%1.1f%%` will display the percentage as a float value with at least digit in the ones place, one digit in the first decimal number place, and the float value will be followed by the percent sign. If you want to learn further about format strings, see [here](https://pyformat.info/).
+
+To see all the available arguments of the `pie()` function, see [here](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.pie.html).
+
+## Plotting Approaches
+
+There are essentially two different approaches to manipulating various plotting elements with matplotlib.
+
+### Stateful approach
+
+With the stateful approach, each element (or state) is dealt with one at a time. Once an element is selected, that element is the only element that may be manipulated. To manipulate another element, you must first select another element (or state) and then modify it. For example, consider the code below.
+
+```{python}
+#| echo: True
+
+x = [0, 1, 2, 3, 4, 5]
+
+y1 = [6, 3, 9, -3, 12, -6]
+y2 = [0, 1, 4, 9, 16, 25]
+
+plt.subplot(2, 1, 1)
+plt.plot(x, y1, 'o-')
+plt.ylabel('y1 data')
+
+plt.subplot(2, 1, 2)
+plt.plot(x, y2, 'o-')
+plt.ylabel('y2 data')
+
+plt.suptitle('A tale of 2 subplots')
+
+plt.show()
+
+```
+
+The code above, it may be seen that the function `subplots()` has an additional argument that has not been used before. The first two arguments tell matplotlib that the figure will have two rows and one column of axes. The third argument specifies which axes (or state) is selected. After the `subplots()` function has been used, the state is set, and only that axes may be modified. The `subplots()` function must be used again to alter the other axes (for example, the bottom one). However, this time the `subplots()` function is used with a different third argument. The third argument, the second time that the `subplots()` function is used to specify that the second axes (the bottom one) should be selected. From then on, the second axes is only able to be modified. If the first axes needs to be adjusted, the `subplots()` would have to be used again as `plt.subplots(2, 1, 1)` and then it could be modified. You must switch state to state, thus the name stateful approach.
+
+### Stateless approach (recommended)
+
+The stateless approach is the method used in all the examples shown prior. The way it works is by assigning variables or handles to the various plotting elements. These handles may then be used to modify the elements at any given point in time. The example shown below creates the same plots as the example used in the stateful approach method but does so with a stateless approach.
+
+```{python}
+#| echo: True
+
+x = [0, 1, 2, 3, 4, 5]
+
+y1 = [6, 3, 9, -3, 12, -6]
+y2 = [0, 1, 4, 9, 16, 25]
+
+fig, ax = plt.subplots(2, 1)
+
+fig.suptitle('A tale of 2 subplots')
+
+ax[0].plot(x, y1, 'o-')
+ax[0].set_ylabel('y1 data')
+
+ax[1].plot(x, y2, 'o-')
+ax[1].set_ylabel('y2 data')
+
+plt.show()
+
+```
+
+This method, in my opinion, is a bit more explicit. If you are trying to manipulate the figure, use the figure handle `fig`. If you are trying to manipulate the first axes, use the first element of the axes handle `ax[0]`. If you are trying to manipulate the second axes, use the second element of the axes handle `ax[1]`. The stateless approach is the method that will be used in all examples seen in this course. The only exception will be in the case where there is a specific reason as to why the stateful must be used. It is only mentioned here because many online examples use either method, and it is worth mentioning to understand those examples.
+
+#### Stateless Approach Example
+
+It is worth mentioning how the stateless approach works with many axes. First, let's create some data to plot. The data is shown below.
+
+```{python}
+#| echo: True
+
+x = [0, 1, 2, 3, 4, 5]
+y = [6, 3, 9, -3, 12, -6]
+
+```
+
+Now the plot may be created. The plot is shown below.
+
+```{python}
+#| echo: True
+
+fig, ax = plt.subplots(2, 2)
+
+fig.suptitle('Four plots on one figure', y=1.05)
+
+ax[0, 0].plot(x, y, 'o-')
+ax[0, 0].set_ylabel('Top Left y Axis Label')
+
+ax[1, 0].bar(x, y)
+ax[1, 0].set_xlabel('x data')
+ax[1, 0].set_ylabel('Bottom Left y Axis Label')
+
+ax[0, 1].scatter(x, y)
+ax[0, 1].set_xlabel('Top Right x Axis Label')
+ax[0, 1].set_ylabel('Top Right y Axis Label')
+
+ax[1, 1].plot(y, x, 'o-')
+ax[1, 1].set_xlabel('Bottom Right x Axis Label')
+ax[1, 1].set_ylabel('Bottom Right y Axis Label')
+
+plt.tight_layout()
+plt.show()
+
+```
+
+Notice the `y` argument of the `suptitle()` function. The `y` argument specifies the y position of the figure title relative to where it is by default. With a value of 1.05, it is 0.05 higher in the y direction then it normally is. Also notice how each axes is referred to by a specific pair of indexes. The indexes move left to the right, then top to the bottom like reading a book. Finally, the `tight_layout()` function is used. This function is a built-in function to matplotlib that automatically adjusts the spacing between axes, so no overlap occurs. Try running the code without it, and you will see the difference. You can read more about the `tight_layout()` function <a href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.tight_layout.html" target="_blank">here</a>.
+
+## Resources
+
+The matplotlib website is an excellent resource for examples and tutorials. The links below are useful resources as well to use if you want to learn more about matplotlib.
+
+-   [Examples](https://matplotlib.org/stable/gallery/index.html)
+-   [Tutorials](https://matplotlib.org/stable/tutorials/index.html)

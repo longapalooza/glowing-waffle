@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.208">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>03.Python Primer</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="03.Python Primer_files/libs/clipboard/clipboard.min.js"></script>
+<script src="03.Python Primer_files/libs/quarto-html/quarto.js"></script>
+<script src="03.Python Primer_files/libs/quarto-html/popper.min.js"></script>
+<script src="03.Python Primer_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="03.Python Primer_files/libs/quarto-html/anchor.min.js"></script>
+<link href="03.Python Primer_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="03.Python Primer_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="03.Python Primer_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="03.Python Primer_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="03.Python Primer_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#thonny" id="toc-thonny" class="nav-link active" data-scroll-target="#thonny">Thonny</a>
+  <ul class="collapse">
+  <li><a href="#script-panel" id="toc-script-panel" class="nav-link" data-scroll-target="#script-panel">Script Panel</a></li>
+  <li><a href="#shell-panel" id="toc-shell-panel" class="nav-link" data-scroll-target="#shell-panel">Shell Panel</a></li>
+  <li><a href="#run-button" id="toc-run-button" class="nav-link" data-scroll-target="#run-button">Run Button</a></li>
+  <li><a href="#stop-button" id="toc-stop-button" class="nav-link" data-scroll-target="#stop-button">Stop Button</a></li>
+  </ul></li>
+  <li><a href="#hello-world" id="toc-hello-world" class="nav-link" data-scroll-target="#hello-world">Hello World</a></li>
+  <li><a href="#variable-declaration" id="toc-variable-declaration" class="nav-link" data-scroll-target="#variable-declaration">Variable Declaration</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a>
+  <ul class="collapse">
+  <li><a href="#int" id="toc-int" class="nav-link" data-scroll-target="#int">int</a></li>
+  <li><a href="#float" id="toc-float" class="nav-link" data-scroll-target="#float">float</a></li>
+  <li><a href="#complex" id="toc-complex" class="nav-link" data-scroll-target="#complex">complex</a></li>
+  </ul></li>
+  <li><a href="#arithmetic-operators" id="toc-arithmetic-operators" class="nav-link" data-scroll-target="#arithmetic-operators">Arithmetic Operators</a>
+  <ul class="collapse">
+  <li><a href="#addition" id="toc-addition" class="nav-link" data-scroll-target="#addition">Addition</a></li>
+  <li><a href="#subtraction" id="toc-subtraction" class="nav-link" data-scroll-target="#subtraction">Subtraction</a></li>
+  <li><a href="#multiplication" id="toc-multiplication" class="nav-link" data-scroll-target="#multiplication">Multiplication</a></li>
+  <li><a href="#division" id="toc-division" class="nav-link" data-scroll-target="#division">Division</a></li>
+  <li><a href="#exponentiation" id="toc-exponentiation" class="nav-link" data-scroll-target="#exponentiation">Exponentiation</a></li>
+  <li><a href="#floor-division" id="toc-floor-division" class="nav-link" data-scroll-target="#floor-division">Floor Division</a></li>
+  <li><a href="#modulus" id="toc-modulus" class="nav-link" data-scroll-target="#modulus">Modulus</a></li>
+  </ul></li>
+  <li><a href="#assignment-operators" id="toc-assignment-operators" class="nav-link" data-scroll-target="#assignment-operators">Assignment Operators</a>
+  <ul class="collapse">
+  <li><a href="#addition-1" id="toc-addition-1" class="nav-link" data-scroll-target="#addition-1">Addition</a></li>
+  <li><a href="#subtraction-1" id="toc-subtraction-1" class="nav-link" data-scroll-target="#subtraction-1">Subtraction</a></li>
+  <li><a href="#multiplication-1" id="toc-multiplication-1" class="nav-link" data-scroll-target="#multiplication-1">Multiplication</a></li>
+  <li><a href="#division-1" id="toc-division-1" class="nav-link" data-scroll-target="#division-1">Division</a></li>
+  <li><a href="#exponentiation-1" id="toc-exponentiation-1" class="nav-link" data-scroll-target="#exponentiation-1">Exponentiation</a></li>
+  <li><a href="#floor-division-1" id="toc-floor-division-1" class="nav-link" data-scroll-target="#floor-division-1">Floor Division</a></li>
+  <li><a href="#modulus-1" id="toc-modulus-1" class="nav-link" data-scroll-target="#modulus-1">Modulus</a></li>
+  </ul></li>
+  <li><a href="#relational-operators" id="toc-relational-operators" class="nav-link" data-scroll-target="#relational-operators">Relational Operators</a>
+  <ul class="collapse">
+  <li><a href="#equal-to" id="toc-equal-to" class="nav-link" data-scroll-target="#equal-to">Equal To</a></li>
+  <li><a href="#not-equal-to" id="toc-not-equal-to" class="nav-link" data-scroll-target="#not-equal-to">Not Equal To</a></li>
+  <li><a href="#greater-than" id="toc-greater-than" class="nav-link" data-scroll-target="#greater-than">Greater Than</a></li>
+  <li><a href="#great-than-or-equal-to" id="toc-great-than-or-equal-to" class="nav-link" data-scroll-target="#great-than-or-equal-to">Great Than or Equal To</a></li>
+  <li><a href="#less-than" id="toc-less-than" class="nav-link" data-scroll-target="#less-than">Less Than</a></li>
+  <li><a href="#less-than-or-equal-to" id="toc-less-than-or-equal-to" class="nav-link" data-scroll-target="#less-than-or-equal-to">Less Than or Equal To</a></li>
+  </ul></li>
+  <li><a href="#collections" id="toc-collections" class="nav-link" data-scroll-target="#collections">Collections</a>
+  <ul class="collapse">
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list">List</a></li>
+  <li><a href="#tuple" id="toc-tuple" class="nav-link" data-scroll-target="#tuple">Tuple</a></li>
+  <li><a href="#set" id="toc-set" class="nav-link" data-scroll-target="#set">Set</a></li>
+  <li><a href="#dictionary" id="toc-dictionary" class="nav-link" data-scroll-target="#dictionary">Dictionary</a></li>
+  </ul></li>
+  <li><a href="#conditional-statements" id="toc-conditional-statements" class="nav-link" data-scroll-target="#conditional-statements">Conditional Statements</a></li>
+  <li><a href="#iteration-loops" id="toc-iteration-loops" class="nav-link" data-scroll-target="#iteration-loops">Iteration (loops)</a>
+  <ul class="collapse">
+  <li><a href="#while-loop" id="toc-while-loop" class="nav-link" data-scroll-target="#while-loop"><code>while</code> loop</a></li>
+  <li><a href="#for-loop" id="toc-for-loop" class="nav-link" data-scroll-target="#for-loop"><code>for</code> loop</a></li>
+  </ul></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#strings" id="toc-strings" class="nav-link" data-scroll-target="#strings">Strings</a></li>
+  <li><a href="#helpful-links" id="toc-helpful-links" class="nav-link" data-scroll-target="#helpful-links">Helpful Links</a></li>
+  </ul>
+</nav>
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">03.Python Primer</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">Sa 2023-02-18 10:29</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="im">import</span> this</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="cell-output cell-output-stdout">
+<pre><code>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!</code></pre>
+</div>
+</div>
+<p>Python is an interpreted, high-level, general-purpose programming language. It is known as a dynamically typed language as opposed to a statically typed language. Simplistically speaking, what this means for the end-user is that you do not need to declare the type of a variable when the variable is defined. With a statically typed language, the variable data type must be stated with the variable definition. The Arduino language is an example of a statically typed language. The data type is indicated before the variable definition (as in <code>int my_var = 3;</code>) in the Arduino language. You tell the computer that the variable <code>my_var</code> is an <code>int</code> data type, and it has a value of <code>3</code>. With Python, this is not the case. You do not need to tell Python that the variable is an <code>int</code> or any other data type. It automatically determines the type from the context of its use. You might ask, why aren’t all programming languages dynamically typed? The added convenience of this feature comes at the cost of performance. With all else being the same, statically typed languages will always outperform dynamically typed ones. There are various whys to install and utilize the Python programming, but we will be using the <a href="https://thonny.org/">Thonny IDE</a> for the context of this course.</p>
+<section id="thonny" class="level2">
+<h2 class="anchored" data-anchor-id="thonny">Thonny</h2>
+<p>Thonny is an IDE (integrated development environment) for the Python programming language. <a href="https://youtu.be/nwIgxrXP-X4">The demonstration video</a> on Thonny’s website is a good introduction to some of the capabilities of Thonny. The video demonstrates the use of many of the features of Thonny. Not all of the features discussed will be used in this course. However, I want to point out some of the ones that will often be used for this course.</p>
+<section id="script-panel" class="level3">
+<h3 class="anchored" data-anchor-id="script-panel">Script Panel</h3>
+<p>Thonny’s&nbsp;script&nbsp;panel&nbsp;is&nbsp;highlighted&nbsp;in&nbsp;<a href="#fig-script">Figure&nbsp;1</a>.</p>
+<div id="fig-script" class="quarto-figure quarto-figure-left anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Thonny’s Script Panel</figcaption><p></p>
+<p><img src="img/thonny_script.gif" class="img-fluid figure-img" style="width:4in" alt="Thonny's Script Panel"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-note callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The theme of Thonny shown in <a href="#fig-script">Figure&nbsp;1</a> may look different than the default theme. I’ve selected the dark theme by going to the toolbar at the top and selecting <code>Tools &gt; Options...</code> Then the <code>Theme &amp; Font</code> tab. Then you may choose your desired theme.</p>
+</div>
+</div>
+<p>The script panel is the area in which you will write your code. There are a few things about the script panel worth mentioning. You can have multiple scripts open at once through the use of tabs in the script panel. The script’s name will be listed on the tab of the script. In <a href="#fig-script">Figure&nbsp;1</a>, the script’s name is <code>my_script.py</code>. The <code>.py</code> is known as the file extension and is reserved for Python files. Also seen in <a href="#fig-script">Figure&nbsp;1</a> is the number <code>1</code>. The number is known as the line number. Line numbers are not turned on by default in Thonny. It is beneficial when troubleshooting code or talking about code with someone else; for this reason, I recommend turning on line numbers.</p>
+<div class="callout callout-style-default callout-note callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To turn on line numbers, go to <code>Tools &gt; Options... &gt; Editor</code> and then check <code>Show line numbers</code>.</p>
+</div>
+</div>
+</section>
+<section id="shell-panel" class="level3">
+<h3 class="anchored" data-anchor-id="shell-panel">Shell Panel</h3>
+<p>Thonny’s shell panel is highlighted above in <a href="#fig-shell">Figure&nbsp;2</a>.</p>
+<div id="fig-shell" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figure&nbsp;2: Thonny’s Shell Panel</figcaption><p></p>
+<p><img src="img/thonny_shell.gif" class="img-fluid figure-img" style="width:4in" alt="Thonny's Shell Panel"></p>
+</figure>
+</div>
+<p>This area is where your script’s output will be displayed and where any error messages are displayed. You will be referring to this panel quite often when writing scripts.</p>
+</section>
+<section id="run-button" class="level3">
+<h3 class="anchored" data-anchor-id="run-button">Run Button</h3>
+<p>Thonny’s run button is highlighted above in <a href="#fig-run">Figure&nbsp;3</a>.</p>
+<div id="fig-run" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figure&nbsp;3: Thonny’s Run Button</figcaption><p></p>
+<p><img src="img/thonny_run.gif" class="img-fluid figure-img" style="width:4in" alt="Thonny's Run Button"></p>
+</figure>
+</div>
+<p>The run button is how a particular Python script will be executed. You may click this button, or you may pressure <code>F5</code>. The developed habit of pressing <code>F5</code> is quicker than transitioning from keyboard to mouse and then clicking the button.</p>
+</section>
+<section id="stop-button" class="level3">
+<h3 class="anchored" data-anchor-id="stop-button">Stop Button</h3>
+<p>Thonny’s stop button is highlighted above in <a href="#fig-stop">Figure&nbsp;4</a>.</p>
+<div id="fig-stop" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p></p><figcaption class="figure-caption">Figure&nbsp;4: Thonny’s Stop Button</figcaption><p></p>
+<p><img src="img/thonny_stop.gif" class="img-fluid figure-img" style="width:4in" alt="Thonny's Stop Button"></p>
+</figure>
+</div>
+<p>The stop button is used to stop a Python script prematurely. Sometimes a Python script will take a long time to run. If you desire to stop the script’s execution prematurely, you can click the stop button or pressing <code>&lt;ctrl&gt; + F2</code>. Most of the time, this is not a problem, but occasionally a script is accidentally written so that it will never end. In this case, you must press the stop button before you can do anything else.</p>
+</section>
+</section>
+<section id="hello-world" class="level2">
+<h2 class="anchored" data-anchor-id="hello-world">Hello World</h2>
+<p>The best way to begin is with a Hello World example. The following code may be written to accomplish this in Python.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="bu">print</span>(<span class="st">'Hello, World!'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello, World!</code></pre>
+</div>
+</div>
+<p>Once this code is written in your script panel in Thonny, you may save the file by going to <code>File &gt; Save</code> or pressing <code>&lt;ctrl&gt; + s</code>. After saving, you can then select the Run button to execute the script. Once the script has been executed, the shell panel should display the message <code>Hello, World!</code>. The code above shows the <code>print</code> function. At a minimum, the <code>print</code> function expects one argument. It takes one argument and tries to display it to the shell. I say tries because sometimes the argument you give it is incapable of being printed. For example, the code shown below will result in an error.</p>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a><span class="bu">print</span>(Hello, World<span class="op">!</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>SyntaxError: invalid syntax (2281819183.py, line 1)</code></pre>
+</div>
+</div>
+<p>While my error message shown above might look slightly different from the error message shown in Thonny, it should say something similar. There should be some message saying <code>invalid syntax</code> and some message with the line number where the error occurred. One of the reasons Python is simple for beginners to pick up is its error messages. Python “typically” has very descriptive and accurate error messages.</p>
+<p>Why did the code above cause an error message?</p>
+</section>
+<section id="variable-declaration" class="level2">
+<h2 class="anchored" data-anchor-id="variable-declaration">Variable Declaration</h2>
+<p>To declare a variable in Python, it’s as simple as typing the variable, <code>=</code>, and then the value to assign the variable. Declaring two variables is shown below.</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>24</code></pre>
+</div>
+</div>
+<p>From the code above, the variables <code>a</code> and <code>b</code> are defined as <code>16</code> and <code>7</code>, respectively. Although variables may be named practically anything you wish, a few rules must be followed.</p>
+<ul>
+<li>Must start with a letter or an underscore.</li>
+<li>Cannot start with a number.</li>
+<li>Must contain only alphanumeric characters and underscore (<code>A-z</code>, <code>0-9</code>, and <code>_</code>).</li>
+<li>Are case-sensitive (<code>age</code>, <code>Age</code>, <code>AGE</code> are all different variable names)</li>
+</ul>
+<p>While it is technically possible to create any variable name while following these rules, it is recommended to follow a styling guide for consistency and readability. Python’s styling guide is known as <a href="https://www.python.org/dev/peps/pep-0008/">PEP 8</a>. It recommends the use of a lowercase <a href="https://en.wikipedia.org/wiki/Snake_case">snake case</a> for variable names. Snake case separates words with underscores (e.g., <code>my_variable_name</code>). Another common styling is known as <a href="https://en.wikipedia.org/wiki/Camel_case">camel case</a>, which separates capitalized words by underscores. <code>myVariableName</code> is an example of a camel case. While discussing styling, PEP 8 also recommends a space be put on either side of an equal sign for readability. While Python can execute code without those spaces, it is more difficult to read.</p>
+</section>
+<section id="data-types" class="level2">
+<h2 class="anchored" data-anchor-id="data-types">Data Types</h2>
+<p>Data types are a programming language way of classifying variables. While Python is dynamically typed, it still has to classify variables into different groups or types. Python has numerous different data types, but it has only three types of numbers in Python. They are listed below.</p>
+<section id="int" class="level3">
+<h3 class="anchored" data-anchor-id="int">int</h3>
+<p>An <code>int</code> data type is a data type that is a number with an integer value. It may be 1, or 2, but not 1.5.</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="bu">print</span>(<span class="bu">type</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'int'&gt;</code></pre>
+</div>
+</div>
+<p>Shown above is the definition of an <code>int</code> variable. The <code>type()</code> function displays the variable data type.</p>
+</section>
+<section id="float" class="level3">
+<h3 class="anchored" data-anchor-id="float">float</h3>
+<p>A <code>float</code> data type is a data type that is a number with a decimal value. It may be 1, or 2, and everything in between.</p>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>y <span class="op">=</span> <span class="fl">2.8</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(<span class="bu">type</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'float'&gt;</code></pre>
+</div>
+</div>
+<p>Shown above is the definition of a <code>float</code> variable.</p>
+</section>
+<section id="complex" class="level3">
+<h3 class="anchored" data-anchor-id="complex">complex</h3>
+<p>A <code>complex</code> data type is a data type that is a number with a complex value. By complex value, I mean one that involves a <a href="https://en.wikipedia.org/wiki/Complex_number">complex number</a> (i.e., the imaginary unit <span class="math inline">\(i\)</span>).</p>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a>z <span class="op">=</span> <span class="fl">1.6</span> <span class="op">+</span> <span class="ot">3.2j</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="bu">print</span>(<span class="bu">type</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'complex'&gt;</code></pre>
+</div>
+</div>
+<p>Shown above is the definition of a <code>complex</code> variable. Note how the imaginary unit <span class="math inline">\(i\)</span> is implemented. It is the letter <span class="math inline">\(j\)</span> and immediately follows the number. There is no multiplication or space.</p>
+</section>
+</section>
+<section id="arithmetic-operators" class="level2">
+<h2 class="anchored" data-anchor-id="arithmetic-operators">Arithmetic Operators</h2>
+<p>Arithmetic operators are used to perform mathematical operations like addition, subtraction, etc. The different types are listed below.</p>
+<section id="addition" class="level3">
+<h3 class="anchored" data-anchor-id="addition">Addition</h3>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="bu">print</span>(a <span class="op">+</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>24</code></pre>
+</div>
+</div>
+</section>
+<section id="subtraction" class="level3">
+<h3 class="anchored" data-anchor-id="subtraction">Subtraction</h3>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="bu">print</span>(a <span class="op">-</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
+</section>
+<section id="multiplication" class="level3">
+<h3 class="anchored" data-anchor-id="multiplication">Multiplication</h3>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="bu">print</span>(a <span class="op">*</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>119</code></pre>
+</div>
+</div>
+</section>
+<section id="division" class="level3">
+<h3 class="anchored" data-anchor-id="division">Division</h3>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="bu">print</span>(a <span class="op">/</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.4285714285714284</code></pre>
+</div>
+</div>
+</section>
+<section id="exponentiation" class="level3">
+<h3 class="anchored" data-anchor-id="exponentiation">Exponentiation</h3>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="bu">print</span>(a <span class="op">**</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>410338673</code></pre>
+</div>
+</div>
+<p>A common mistake I see in first time Python users is not using <code>**</code> for exponents. Quite often, first-time users try to use the caret symbol (<code>^</code>). In Python, this symbol means something else, which will produce erroneous results.</p>
+</section>
+<section id="floor-division" class="level3">
+<h3 class="anchored" data-anchor-id="floor-division">Floor Division</h3>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="bu">print</span>(a <span class="op">//</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2</code></pre>
+</div>
+</div>
+<p>The floor division operator is one that may be unfamiliar. In the example shown above, it returns the whole number of the quotient of the division of <code>a</code> and <code>b</code>. <code>a</code> divided by <code>b</code> is <code>2.428...</code> so the floor division of <code>a</code> and <code>b</code> returns <code>2</code>.</p>
+</section>
+<section id="modulus" class="level3">
+<h3 class="anchored" data-anchor-id="modulus">Modulus</h3>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a><span class="bu">print</span>(a <span class="op">%</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+</div>
+<p>The modulus operator is another one that may be unfamiliar. The way it works is similar to division. In the example above, <code>a</code> is divided by <code>b</code>. Its <a href="https://en.wikipedia.org/wiki/Remainder">remainder</a> is what is returned, not the <a href="https://en.wikipedia.org/wiki/Quotient">quotient</a>. Since <code>a</code> is <code>17</code> and <code>b</code> is <code>7</code>, <code>17</code> is divided by <code>7</code>, which equals <code>2</code> with a remainder of <code>3</code>.</p>
+</section>
+</section>
+<section id="assignment-operators" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-operators">Assignment Operators</h2>
+<p>Assignment operators are a way to perform two operations at once. They work by performing an arithmetic operation as well as an assignment operation. Some of the more common assignment operators in Python are shown below.</p>
+<section id="addition-1" class="level3">
+<h3 class="anchored" data-anchor-id="addition-1">Addition</h3>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>a <span class="op">+=</span> b <span class="co"># the same as a = a + b</span></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>24</code></pre>
+</div>
+</div>
+<p>Note the pound sign (or hashtag). This is how comments in Python are made. This type of comment is known as a line comment. Python will ignore the pound sign and the rest of the line. In the Arduino language, a line comment is made by two forward slashes (<code>//</code>). In the Arduino language, there is another type of comment called a block comment. You start a block comment with a forward slash and asterisk (<code>/*</code>) and end a block comment with an asterisk and forward-slash (<code>*/</code>). Anything between those two groups (<code>/*</code> and <code>*/</code>), regardless if there are multiple lines, will be disregarded by the Arduino language. Python has no such block comments. In Python, you must add a pound sign in front of every line that you wish to comment out. Comments are the best way to write notes to yourself or anyone viewing your code. It is good practice to comment your code. Comments are also handy in troubleshooting your code. You can quickly “remove” sections of code to see how over parts of your code behave. In Thonny, you can highlight multiple lines and press <code>&lt;ctrl&gt; + 3</code>, and it will comment out all of the highlighted lines. Since Python has no block comment feature, this is a handy trick when commenting out large code sections.</p>
+</section>
+<section id="subtraction-1" class="level3">
+<h3 class="anchored" data-anchor-id="subtraction-1">Subtraction</h3>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>a <span class="op">-=</span> b <span class="co"># the same as a = a - b</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
+</section>
+<section id="multiplication-1" class="level3">
+<h3 class="anchored" data-anchor-id="multiplication-1">Multiplication</h3>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>a <span class="op">*=</span> b <span class="co"># the same as a = a *b</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>119</code></pre>
+</div>
+</div>
+</section>
+<section id="division-1" class="level3">
+<h3 class="anchored" data-anchor-id="division-1">Division</h3>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>a <span class="op">/=</span> b <span class="co"># the same as a = a / b</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2.4285714285714284</code></pre>
+</div>
+</div>
+</section>
+<section id="exponentiation-1" class="level3">
+<h3 class="anchored" data-anchor-id="exponentiation-1">Exponentiation</h3>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb37-3"><a href="#cb37-3"></a>a <span class="op">**=</span> b <span class="co"># the same as a = a ** b</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>410338673</code></pre>
+</div>
+</div>
+</section>
+<section id="floor-division-1" class="level3">
+<h3 class="anchored" data-anchor-id="floor-division-1">Floor Division</h3>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb39-2"><a href="#cb39-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>a <span class="op">//=</span> b <span class="co"># the same as a = a // b</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2</code></pre>
+</div>
+</div>
+</section>
+<section id="modulus-1" class="level3">
+<h3 class="anchored" data-anchor-id="modulus-1">Modulus</h3>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb41-3"><a href="#cb41-3"></a>a <span class="op">%=</span> b <span class="co"># the same as a = a % b</span></span>
+<span id="cb41-4"><a href="#cb41-4"></a><span class="bu">print</span>(a)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="relational-operators" class="level2">
+<h2 class="anchored" data-anchor-id="relational-operators">Relational Operators</h2>
+<p>Relational operators are ones that compare two variables. They return a Boolean (i.e., True or False value) and are often used in conditional statements (i.e., <code>if</code> statements). Shown below are some of the more common relational operators in Python.</p>
+<section id="equal-to" class="level3">
+<h3 class="anchored" data-anchor-id="equal-to">Equal To</h3>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a><span class="bu">print</span>(a <span class="op">==</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+</div>
+<p>This equal to operator should not be confused with the assignment operator (<code>=</code>). The <code>==</code> is asking, “Is the left-hand side (<code>a</code>) equal to the right-hand side (<code>b</code>)?” While the assignment operator (<code>=</code>) says, “The left-hand side is defined as whatever the right-hand side is.”</p>
+</section>
+<section id="not-equal-to" class="level3">
+<h3 class="anchored" data-anchor-id="not-equal-to">Not Equal To</h3>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a><span class="bu">print</span>(a <span class="op">!=</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+<p>The not equals checks if <span class="math inline">\(a \neq b\)</span>. In various programming languages, you will often see the exclamation mark used as a not operator.</p>
+</section>
+<section id="greater-than" class="level3">
+<h3 class="anchored" data-anchor-id="greater-than">Greater Than</h3>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb47-2"><a href="#cb47-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="bu">print</span>(a <span class="op">&gt;</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="great-than-or-equal-to" class="level3">
+<h3 class="anchored" data-anchor-id="great-than-or-equal-to">Great Than or Equal To</h3>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb49-2"><a href="#cb49-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb49-3"><a href="#cb49-3"></a><span class="bu">print</span>(a <span class="op">&gt;=</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>True</code></pre>
+</div>
+</div>
+</section>
+<section id="less-than" class="level3">
+<h3 class="anchored" data-anchor-id="less-than">Less Than</h3>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb51-2"><a href="#cb51-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a><span class="bu">print</span>(a <span class="op">&lt;</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+<section id="less-than-or-equal-to" class="level3">
+<h3 class="anchored" data-anchor-id="less-than-or-equal-to">Less Than or Equal To</h3>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb53-1"><a href="#cb53-1"></a>a <span class="op">=</span> <span class="dv">17</span></span>
+<span id="cb53-2"><a href="#cb53-2"></a>b <span class="op">=</span> <span class="dv">7</span></span>
+<span id="cb53-3"><a href="#cb53-3"></a><span class="bu">print</span>(a <span class="op">&lt;=</span> b)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>False</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="collections" class="level2">
+<h2 class="anchored" data-anchor-id="collections">Collections</h2>
+<p>Python is capable of storing multiple values in a single variable. Python calls these variables collections. In other programming languages, they are often called arrays or vectors. Python has four types of collections. They are listed below.</p>
+<section id="list" class="level3">
+<h3 class="anchored" data-anchor-id="list">List</h3>
+<p>A list is the most common type of collection in Python. We will be using lists quite often. A list is the type of collection closest to what you typically think of when you think of a vector. It is defined by using square brackets (<code>[ ]</code>), while a comma separates each element of the list.</p>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a>cars <span class="op">=</span> [<span class="st">'Ford'</span>, <span class="st">'Volvo'</span>, <span class="st">'BMW'</span>]</span>
+<span id="cb55-2"><a href="#cb55-2"></a><span class="bu">print</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>['Ford', 'Volvo', 'BMW']</code></pre>
+</div>
+</div>
+<p>Python is a zero-indexed language meaning that whenever it starts counting elements of a list, it starts from 0. That is to say that the first element of a list is the zero index; the second element is the one index, and so on. Shown below is how you can refer to a particular element in a list. Note the number 2 here. That is referring to the third element of the list <code>cars</code>.</p>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="bu">print</span>(cars[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>BMW</code></pre>
+</div>
+</div>
+<p>A list is known as an ordered, changeable collection that allows duplicates. An ordered changeable collection means that the order of the elements in the list matters, and you can change it. You are also able to have duplicate elements.</p>
+</section>
+<section id="tuple" class="level3">
+<h3 class="anchored" data-anchor-id="tuple">Tuple</h3>
+<p>A tuple (hear the word <a href="https://www.google.com/search?q=how+to+pronounce+tuple">here</a>) is a collection that is defined by the use of parenthesis (<code>( )</code>). Just as with a list, each element of the tuple is separated by a comma.</p>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a>fruits <span class="op">=</span> (<span class="st">'apple'</span>, <span class="st">'banana'</span>, <span class="st">'cherry'</span>)</span>
+<span id="cb59-2"><a href="#cb59-2"></a><span class="bu">print</span>(fruits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>('apple', 'banana', 'cherry')</code></pre>
+</div>
+</div>
+<p>A tuple is also zero-indexed. A similar method used by a list is implemented to refer to a particular element of a tuple. Referring to a specific element of a tuple is shown below.</p>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="bu">print</span>(fruits[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>cherry</code></pre>
+</div>
+</div>
+<p>A tuple is ordered and allows duplicates just as a list does. The main difference between a tuple and a list is that the tuple is unchangeable. Once defined, there is no changing it or adding elements to it. You may ask why you might need to use something like this when a list could serve the same purpose. Lists can do the same job a tuple, but with a tuple, you get the added security that the collection you are using is not being redefined at any point. For example, say you wanted to make a Python script that kept up with the courses you’re required to take for your degree. Those courses will not change for your time at Tech. This would be a good use case for a tuple.</p>
+</section>
+<section id="set" class="level3">
+<h3 class="anchored" data-anchor-id="set">Set</h3>
+<p>A set is a collection defined by curly brackets (<code>{ }</code>) and has elements separated by commas. A set is unordered, unindexed, doesn’t allow changing or adding elements, and does not allow duplicates.</p>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>pets <span class="op">=</span> {<span class="st">'dog'</span>, <span class="st">'cat'</span>, <span class="st">'fish'</span>, <span class="st">'dog'</span>}</span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="bu">print</span>(pets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'fish', 'cat', 'dog'}</code></pre>
+</div>
+</div>
+<p>You can see from the code above that it removed the duplicate dog element. A set is the most restrictive type of Python collection. As mentioned, a set is unindexed, meaning particular elements may not be referred to individually as we did with the list and tuple. Like a tuple, a set has specific cases where it is beneficial to use it over a list. For example, say you wanted to make a collection of anyone who took any of the ENGR/ENGT 12X courses last year. Some students went through the ENGR/ENGT 12X course on track (taking 120, 121, and 122 in order), but some students didn’t pass a class and got off track. You could obtain rosters from all the ENGR/ENGT 12X course last year and put all the names in a set. The set would then tell you how many unique students were involved with the ENGR/ENGT 12X series last year.</p>
+</section>
+<section id="dictionary" class="level3">
+<h3 class="anchored" data-anchor-id="dictionary">Dictionary</h3>
+<p>A dictionary is the most different type of Python collection. It is unordered, changeable, and indexed. A dictionary is defined using curly brackets (<code>{ }</code>), and every element is separated by a comma but works with the concept of key/value pairs for each element. Each element has a key and it has a value.</p>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a>player1 <span class="op">=</span> {<span class="st">'name'</span>: <span class="st">'Babe Ruth'</span>, <span class="st">'height'</span>: <span class="st">'6ft 2in'</span>, <span class="st">'weight'</span>: <span class="dv">215</span>}</span>
+<span id="cb65-2"><a href="#cb65-2"></a><span class="bu">print</span>(player1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'Babe Ruth', 'height': '6ft 2in', 'weight': 215}</code></pre>
+</div>
+</div>
+<p>A dictionary’s key is a way for us to quickly refer to that particular element (instead of a specific index). For example, the player’s name in the variable <code>player1</code> may be obtained by the code shown below.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1"></a><span class="bu">print</span>(player1[<span class="st">'name'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Babe Ruth</code></pre>
+</div>
+</div>
+<p>Sometimes dictionaries may get a little lengthy or long for a single line. You can break the different elements onto different lines, as shown below for readability.</p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>player2 <span class="op">=</span> {</span>
+<span id="cb69-2"><a href="#cb69-2"></a>    <span class="st">'name'</span>: <span class="st">'Mickey Mantle'</span>,</span>
+<span id="cb69-3"><a href="#cb69-3"></a>    <span class="st">'weight'</span>: <span class="dv">195</span>,</span>
+<span id="cb69-4"><a href="#cb69-4"></a>    <span class="st">'height'</span>: <span class="st">'5ft 11in'</span></span>
+<span id="cb69-5"><a href="#cb69-5"></a>}</span>
+<span id="cb69-6"><a href="#cb69-6"></a><span class="bu">print</span>(player2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{'name': 'Mickey Mantle', 'weight': 195, 'height': '5ft 11in'}</code></pre>
+</div>
+</div>
+<p>The last thing to mention about dictionaries is that the key terms must be unique. You can not have multiple <code>name</code> keys or multiple <code>height</code> keys.</p>
+</section>
+</section>
+<section id="conditional-statements" class="level2">
+<h2 class="anchored" data-anchor-id="conditional-statements">Conditional Statements</h2>
+<p>Conditional statements in Python are made using the <code>if</code>, <code>elif</code>, and <code>else</code> keywords. Every if statement must begin with the keyword <code>if</code>. The <code>if</code> is then followed by a particular condition. In the example below, the condition uses the relational operator greater than <code>&gt;</code> to compare <code>a</code> and <code>b</code>. A colon then follows the condition. If this condition is true, then the message “b is greater than a” will be displayed. Note the indention of the first print statement. The indention is how Python identifies what must happen in the <code>if</code> statement. While the indention does not have to be four spaces, PEP 8 recommends using four spaces and avoiding tabs. In Thonny, pressing <code>&lt;tab&gt;</code> will automatically enter four spaces for you. The code that will be executed if the <code>if</code> is true is known as a block. In the Arduino language, a block is specified by the use of curly brackets. That’s why you must always have an open and closing curly bracket after an if statement in the Arduino language. With Python, this is not the case. You simply need to indent to indicate a different block of code.</p>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>a <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb71-2"><a href="#cb71-2"></a>b <span class="op">=</span> <span class="dv">33</span></span>
+<span id="cb71-3"><a href="#cb71-3"></a><span class="cf">if</span> b <span class="op">&gt;</span> a:</span>
+<span id="cb71-4"><a href="#cb71-4"></a>    <span class="bu">print</span>(<span class="st">'b is greater than a'</span>)</span>
+<span id="cb71-5"><a href="#cb71-5"></a><span class="cf">elif</span> a <span class="op">==</span> b:</span>
+<span id="cb71-6"><a href="#cb71-6"></a>    <span class="bu">print</span>(<span class="st">'b is equal to a'</span>)</span>
+<span id="cb71-7"><a href="#cb71-7"></a><span class="cf">else</span>:</span>
+<span id="cb71-8"><a href="#cb71-8"></a>    <span class="bu">print</span>(<span class="st">'b is less than a'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>b is less than a</code></pre>
+</div>
+</div>
+<p>The else if statement is determined by the <code>elif</code> keyword. It works much the same as an if statement. You are allowed to have as many else if statements as desired (or none at all), but you must always begin with and have only one if statement. Finally, a conditional statement may end with an else statement by the keyword <code>else</code>. The else statement block will execute if none of the above if or else if statements are true. The else statement is a kind of a catch-all. You do not have to have an else statement in a conditional statement, although it typically is good practice. Shown below is another example of the use of conditional statements.</p>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>a <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a>b <span class="op">=</span> <span class="dv">33</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a>c <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb73-4"><a href="#cb73-4"></a><span class="co"># conditional statement 1</span></span>
+<span id="cb73-5"><a href="#cb73-5"></a><span class="cf">if</span> b <span class="op">==</span> <span class="dv">33</span> <span class="kw">or</span> c <span class="op">==</span> <span class="dv">6</span>:</span>
+<span id="cb73-6"><a href="#cb73-6"></a>    <span class="bu">print</span>(<span class="st">'b equals 33 or c equals 6.'</span>)</span>
+<span id="cb73-7"><a href="#cb73-7"></a></span>
+<span id="cb73-8"><a href="#cb73-8"></a><span class="co"># conditional statement 2</span></span>
+<span id="cb73-9"><a href="#cb73-9"></a><span class="cf">if</span> b <span class="op">&gt;</span> a <span class="kw">and</span> c <span class="op">==</span> <span class="dv">4</span>:</span>
+<span id="cb73-10"><a href="#cb73-10"></a>    <span class="bu">print</span>(<span class="st">'b is greater than a and c equals 4.'</span>)</span>
+<span id="cb73-11"><a href="#cb73-11"></a><span class="cf">elif</span> a <span class="op">==</span> b:</span>
+<span id="cb73-12"><a href="#cb73-12"></a>    <span class="bu">print</span>(<span class="st">'b is equal to a.'</span>)</span>
+<span id="cb73-13"><a href="#cb73-13"></a><span class="cf">else</span>:</span>
+<span id="cb73-14"><a href="#cb73-14"></a>    <span class="bu">print</span>(<span class="st">'b is less than a'</span>)</span>
+<span id="cb73-15"><a href="#cb73-15"></a>    <span class="bu">print</span>(<span class="st">'or b is greater than a and c does not equal 4.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>b equals 33 or c equals 6.
+b is less than a
+or b is greater than a and c does not equal 4.</code></pre>
+</div>
+</div>
+<p>Note the use of the <code>and</code>, and <code>or</code> keywords. In the Arduino language, <code>and</code>, and <code>or</code> are written as <code>&amp;&amp;</code>, and <code>||</code>, respectively. In addition to <code>and</code>, and <code>or</code>, there is the <code>not</code> keyword commonly used. An example of its use is shown below.</p>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>a <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb75-2"><a href="#cb75-2"></a>b <span class="op">=</span> <span class="dv">33</span></span>
+<span id="cb75-3"><a href="#cb75-3"></a><span class="cf">if</span> <span class="kw">not</span> a <span class="op">==</span> b:</span>
+<span id="cb75-4"><a href="#cb75-4"></a>    <span class="bu">print</span>(<span class="st">'a is not equal to b.'</span>)</span>
+<span id="cb75-5"><a href="#cb75-5"></a><span class="cf">else</span>:</span>
+<span id="cb75-6"><a href="#cb75-6"></a>    <span class="bu">print</span>(<span class="st">'a is equal to b.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a is not equal to b.</code></pre>
+</div>
+</div>
+</section>
+<section id="iteration-loops" class="level2">
+<h2 class="anchored" data-anchor-id="iteration-loops">Iteration (loops)</h2>
+<p>There are two types of loops that may be used in Python. They are listed below.</p>
+<section id="while-loop" class="level3">
+<h3 class="anchored" data-anchor-id="while-loop"><code>while</code> loop</h3>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb77-2"><a href="#cb77-2"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb77-3"><a href="#cb77-3"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb77-4"><a href="#cb77-4"></a>    i <span class="op">+=</span> <span class="dv">1</span> <span class="co"># what happens if this line is not here?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4
+5
+6
+7
+8
+9</code></pre>
+</div>
+</div>
+<p>Shown above is a <code>while</code> loop. It uses one condition, and if that condition is true, it performs an iteration of the block of code in the while loop. The block that is executed is determined by the indention level, similar to conditional statements. The condition is checked at the start of each iteration. As long as it’s true, the iteration is performed.</p>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb79-3"><a href="#cb79-3"></a>    <span class="bu">print</span>(i)</span>
+<span id="cb79-4"><a href="#cb79-4"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb79-5"><a href="#cb79-5"></a>        <span class="cf">break</span></span>
+<span id="cb79-6"><a href="#cb79-6"></a>    i <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3</code></pre>
+</div>
+</div>
+<p>Shown above is an example of how to use the <code>break</code> keyword. The <code>break</code> keyword stops the current iteration of the loop and exits out of the loop.</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a><span class="co"># i = 0</span></span>
+<span id="cb81-2"><a href="#cb81-2"></a><span class="co"># while i &lt; 10:</span></span>
+<span id="cb81-3"><a href="#cb81-3"></a><span class="co">#     print(i)</span></span>
+<span id="cb81-4"><a href="#cb81-4"></a><span class="co">#     if i == 3:</span></span>
+<span id="cb81-5"><a href="#cb81-5"></a><span class="co">#         continue</span></span>
+<span id="cb81-6"><a href="#cb81-6"></a><span class="co">#     i += 1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Shown above is an example of how to use the <code>continue</code> keyword. The <code>continue</code> keyword stops the current iteration, but instead of exiting out of the loop, it “continues” with the loop’s next iteration.</p>
+<p>Why is the entire code snippet commented out in the example above?</p>
+</section>
+<section id="for-loop" class="level3">
+<h3 class="anchored" data-anchor-id="for-loop"><code>for</code> loop</h3>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb82-1"><a href="#cb82-1"></a>snacks <span class="op">=</span> [<span class="st">'chips'</span>, <span class="st">'apples'</span>, <span class="st">'peanuts'</span>]</span>
+<span id="cb82-2"><a href="#cb82-2"></a><span class="cf">for</span> snack <span class="kw">in</span> snacks:</span>
+<span id="cb82-3"><a href="#cb82-3"></a>    <span class="bu">print</span>(snack)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>chips
+apples
+peanuts</code></pre>
+</div>
+</div>
+<p>Shown above is a <code>for</code> loop. The for loop uses the keyword <code>for</code> followed by a variable, then the keyword <code>in</code>, and then another variable. The last variable should be a collection of some sort. In the example above, it is a list. The first variable in the for loop statement may be named practically anything. However, it is common practice to use the singular form of the collection variable (i.e., <code>snack</code> and <code>snacks</code>). Using the singular form of the variable is more for readability than anything else. A <code>for</code> loop works by iterating (or looping) through all the collection elements. On each iteration (or loop), the first variable is assigned the collection’s particular element’s value. For the above example, the variable <code>snack</code> will be equal to <code>chips</code> on the first iteration, <code>apples</code> in the second iteration, and <code>peanuts</code> in the third iteration. The way you might read a <code>for</code> loop statement is by saying, “For each element of snacks as the variable snack, print the snack” or “For every snack in the collection snacks, print the snack”. Just as in the case of <code>while</code> loops, the keywords <code>break</code> and <code>continue</code> may be used. A useful function when using a <code>for</code> loop is the <code>range()</code> function. It is used below.</p>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb84-1"><a href="#cb84-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">6</span>): <span class="co"># same as range(0, 6, 1)</span></span>
+<span id="cb84-2"><a href="#cb84-2"></a>    <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+1
+2
+3
+4
+5</code></pre>
+</div>
+</div>
+<p>The <code>range()</code> function takes a minimum of one argument. In the example above, <code>range(6)</code> creates a collection that contains the integer values starting at 0 and going all the way but does not include 6.</p>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">7</span>): <span class="co"># same as range(2, 7, 1)</span></span>
+<span id="cb86-2"><a href="#cb86-2"></a>    <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2
+3
+4
+5
+6</code></pre>
+</div>
+</div>
+<p>Shown above is the use of the <code>range()</code> function where two arguments are given. The first argument is the starting value of the collection, and the second argument is the noninclusive ending value of the collection. For the example above, the collection contains the integer values from 2 to 6.</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">21</span>, <span class="dv">3</span>):</span>
+<span id="cb88-2"><a href="#cb88-2"></a>    <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0
+3
+6
+9
+12
+15
+18</code></pre>
+</div>
+</div>
+<p>Shown above is the third and final way to use the <code>range()</code> function. When three arguments are given, the first two behave as the previous example. The third argument specifies the interval between each step of the collection. So instead of counting by ones, the collection counts by threes in the example above.</p>
+</section>
+</section>
+<section id="functions" class="level2">
+<h2 class="anchored" data-anchor-id="functions">Functions</h2>
+<p>User-defined functions in Python are created by the use of the <code>def</code> keyword. Shown below is an example of a user-defined function.</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="kw">def</span> my_function1():</span>
+<span id="cb90-2"><a href="#cb90-2"></a>    <span class="bu">print</span>(<span class="st">'What'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The keyword <code>def</code> is followed by the function name, then an open and close parenthesis, and finally, a colon to define a function. Function names follow the same rules as variable names. <code>my_function1()</code> takes no arguments. That is why there is nothing between the opening and closing parentheses. If the function required some type of argument, the argument names would be inserted between the parentheses. An example of this is shown below.</p>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="kw">def</span> my_function2(a, b):</span>
+<span id="cb91-2"><a href="#cb91-2"></a>    <span class="cf">return</span> a <span class="op">+</span> b <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice the indentation in both functions. The indentation tells Python where the different blocks of code begin and end. In the above example, the keyword <code>return</code> is used. The <code>return</code> keyword is how a user-defined function gives value back. If no <code>return</code> keyword is used, the function returns a <code>None</code> value, a special data type in Python representing a nothing value.</p>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a><span class="kw">def</span> my_function3(a, b):</span>
+<span id="cb92-2"><a href="#cb92-2"></a>    <span class="cf">if</span> a <span class="op">&gt;</span> b:</span>
+<span id="cb92-3"><a href="#cb92-3"></a>        <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb92-4"><a href="#cb92-4"></a>    <span class="cf">elif</span> a <span class="op">&lt;</span> b:</span>
+<span id="cb92-5"><a href="#cb92-5"></a>        <span class="cf">return</span> b <span class="op">-</span> a</span>
+<span id="cb92-6"><a href="#cb92-6"></a>    <span class="cf">else</span>:</span>
+<span id="cb92-7"><a href="#cb92-7"></a>        <span class="cf">return</span> a <span class="op">*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Shown above is another example of a function. It may be seen that there are multiple <code>return</code> keywords. Having multiple <code>return</code> statements is perfectly acceptable. The function will return the value based on the conditional statement. To use a user-defined function is similar to using any other function in Python. Several examples are shown below.</p>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a><span class="bu">print</span>(my_function1())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>What
+None</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The <code>None</code> value displayed. This is since no <code>return</code> keyword was used in the <code>my_function1()</code> function.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a><span class="bu">print</span>(my_function2(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>19</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a><span class="bu">print</span>(my_function3(<span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>9</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="bu">print</span>(my_function3(<span class="dv">4</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>6</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a><span class="bu">print</span>(my_function3(<span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code></code></pre>
+</div>
+</div>
+</section>
+<section id="strings" class="level2">
+<h2 class="anchored" data-anchor-id="strings">Strings</h2>
+<p>Strings are a Python data type that represents a character like value. Character like values are any alphanumeric value (i.e., A-z0-9), but they also include punctuation, spaces, tabs, etc. To indicate a string in Python, single <code>'</code> or double <code>"</code> quotes may be used. I personally prefer single quotes, but there is not an agreed-upon styling choice. Whatever you choose, be consistent. Shown below is an example of defining a string.</p>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>greeting <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb104-2"><a href="#cb104-2"></a>name <span class="op">=</span> <span class="st">'Will'</span></span>
+<span id="cb104-3"><a href="#cb104-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Will</code></pre>
+</div>
+</div>
+<p>The string variables <code>greeting</code> and <code>name</code> are defined with single quotes, and the print statement combines all the strings through the use of concatenation. Concatenation is the method in which strings are “added”, “strung”, or “appended” to one another. For the above example, there strings a concatenated together, the string ‘Hello’, ’ ‘, and ’Will’.</p>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>greeting <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb106-2"><a href="#cb106-2"></a>name <span class="op">=</span> <span class="st">'Will'</span></span>
+<span id="cb106-3"><a href="#cb106-3"></a>question <span class="op">=</span> <span class="st">'How</span><span class="ch">\'</span><span class="st">s it going?'</span></span>
+<span id="cb106-4"><a href="#cb106-4"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">'. '</span> <span class="op">+</span> question)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello Will. How's it going?</code></pre>
+</div>
+</div>
+<p>Shown above is another example of the use of strings. It is important to point out the string defined in the variable <code>question</code>. Occasionally when writing strings, the use of single or double quotes in the string itself will be necessary. If I did not include the backslash, Python would have interpreted the single quote as the closing single quote and would think the string is over, but this is not the case. A backslash is used to “escape” the following character to avoid the quote’s premature closing. Escapement is a method in which character values are interpreted literally as characters and not as program code. When Python sees a backslash in a string, it knows the next character (in this case, the single quote) is not a closing single quote but a single quote character that should be a part of the string. Another common mistake is shown below.</p>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>greeting <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb108-2"><a href="#cb108-2"></a>name <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb108-3"><a href="#cb108-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: can only concatenate str (not "int") to str</code></pre>
+</div>
+</div>
+<p>The <code>name</code> variable is not a string in the example above. To Python, the variable <code>name</code> represents the number five and not a character value. In this case, it does not know how to concatenate a numeric value to a string. Mix matched data types like this may be fixed in one of two ways. The first way is shown below, enclosing the number 5 with single quotes.</p>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a>greeting <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb110-2"><a href="#cb110-2"></a>name <span class="op">=</span> <span class="st">'5'</span></span>
+<span id="cb110-3"><a href="#cb110-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello 5</code></pre>
+</div>
+</div>
+<p>The second way is to utilize the <code>str()</code> function. The <code>str()</code> function is a built-in function in Python that takes one argument. It tries to take that argument and convert it into a string. Using the <code>str()</code> function is shown below.</p>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1"></a>greeting <span class="op">=</span> <span class="st">'Hello'</span></span>
+<span id="cb112-2"><a href="#cb112-2"></a>name <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb112-3"><a href="#cb112-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">' '</span> <span class="op">+</span> <span class="bu">str</span>(name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hello 5</code></pre>
+</div>
+</div>
+</section>
+<section id="helpful-links" class="level2">
+<h2 class="anchored" data-anchor-id="helpful-links">Helpful Links</h2>
+<ul>
+<li><a href="https://docs.python.org/3/tutorial/">Python.org</a></li>
+<li><a href="https://www.w3schools.com/python/">W3Schools</a></li>
+<li><a href="https://www.tutorialspoint.com/python/">Tutorials Point</a></li>
+</ul>
+<hr>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
