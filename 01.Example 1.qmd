@@ -10,10 +10,10 @@ execute:
 fig-cap-location: top
 format:
     html:
-      code-line-numbers: true
-      css: css/styles.css
-      fig-align: center
-      toc: true
+        code-line-numbers: true
+        css: css/styles.css
+        fig-align: center
+        toc: true
 jupyter: python3
 ---
 
