@@ -1,0 +1,11 @@
+
+## Quarto Examples
+
+[01.Example 1](https://longapalooza.github.io/glowing-waffle/01.Example 1.html)
+([source](https://github.com/longapalooza/glowing-waffle/blob/main/01.Example%201.qmd))
+
+[03.Python Primer](https://longapalooza.github.io/glowing-waffle/03.Python Primer.html)
+([source](https://github.com/longapalooza/glowing-waffle/blob/main/03.Python%20Primer.qmd))
+
+[04.Plotting in Python](https://longapalooza.github.io/glowing-waffle/04.Plotting in Python.html)
+([source](https://github.com/longapalooza/glowing-waffle/blob/main/04.Plotting%20in%20Python.qmd))
