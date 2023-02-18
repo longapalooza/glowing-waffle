@@ -1,22 +1,27 @@
----
-title: Title
-date-modified: last-modified
-date-format: 'dd YYYY-MM-DD HH:mm'
-editor:
-    markdown: 
-        canonical: true
-execute:
-    echo: False
-fig-cap-location: top
-format:
-    html:
-      code-line-numbers: true
-      css: css/styles.css
-      fig-align: center
-      toc: true
-jupyter: python3
----
-
 ```{python}
-from quarto_glu import *
+
+import pint
+from sympy.parsing.latex import parse_latex
+
+ureg = pint.UnitRegistry()
+ureg.default_format = "~L"
+Q_ = ureg.Quantity
+
+def latex_as_py(latex_string, variable_namespace_dict):
+    return str(parse_latex(latex_string).subs(variable_namespace_dict))
+
+def assign_variables(latex_string, values = [], display = False):
+    symbols = parse_latex(latex_string).free_symbols
+    symbols = sorted(symbols, key = lambda s: s.name)
+    d = {}
+    n_values = len(values)
+    for i, symbol in enumerate(symbols):
+        if i < n_values:
+            d[symbol] = values[i]
+        else:
+            d[symbol] = None
+    if display:
+        print(d)
+    return d
+
 ```

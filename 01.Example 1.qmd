@@ -1,27 +1,8 @@
 ---
 title: 01.Example 1
-date-modified: last-modified
-date-format: 'dd YYYY-MM-DD HH:mm'
-editor:
-    markdown: 
-        canonical: true
-execute:
-    echo: False
-fig-cap-location: top
-format:
-    html:
-        code-line-numbers: true
-        css: css/styles.css
-        fig-align: center
-        toc: true
-jupyter: python3
 ---
 
-```{python}
-
-from quarto_glu import *
-
-```
+{{< include _header.qmd >}}
 
 ```{python}
 
@@ -33,11 +14,11 @@ P = Q_(2.5, 'MW')    # turbine power produced
 T_inf = Q_(25, 'degC')    # far field temperature
 T_sur = Q_(20, 'degC')    # surrounding temperature
 es = 0.83    # surface emissivity
-h = Q_(35, 'W/(m^2*K)')    # convection coefficient
+h = Q_(35, 'W/(m**2*K)')    # convection coefficient
 N_gb = 0.93   # gear box efficiency
 N_gen = 0.95   # generator efficiency
 
-sig = Q_(5.67*10**-8, 'W/(m^2*K^4)')
+sig = Q_(5.67*10**-8, 'W/(m**2*K**4)')
 pi = math.pi
 
 ```
@@ -48,13 +29,13 @@ pi = math.pi
 #| output: asis
 
 content = f'''
-The blades of a wind turbine turn a large shaft at a relatively slow speed. The rotational speed is increased by a gearbox that has an efficiency shown below. In turn, the gearbox output shaft drives an electric generator with an efficiency also shown below. The cylindrical nacelle, which houses the gearbox, generator, and associated equipment, is ${L}$ long and has a diameter of ${D}$. The turbine produces ${P}$ of electrical power, and the air and surroundings temperatures are ${T_inf}$ and ${T_sur}$, respectively. The emissivity of the nacelle is ${es}$, and the convective heat transfer coefficient is ${h}$. The surface of the nacelle that is adjacent to the blade hub can be considered to be adiabatic.
+The blades of a wind turbine, as seen in @fig-wind-turbine, turn a large shaft at a relatively slow speed. The rotational speed is increased by a gearbox that has an efficiency shown below. In turn, the gearbox output shaft drives an electric generator with an efficiency also shown below. The cylindrical nacelle, which houses the gearbox, generator, and associated equipment, is ${L}$ long and has a diameter of ${D}$. The turbine produces ${P}$ of electrical power, and the air and surroundings temperatures are ${T_inf}$ and ${T_sur}$, respectively. The emissivity of the nacelle is ${es}$, and the convective heat transfer coefficient is ${h}$. The surface of the nacelle that is adjacent to the blade hub can be considered to be adiabatic.
 '''
 print(content)
 
 ```
 
-![](img/01.Example%201.png){width="4in"}
+![Wind Turbine](img/01.Example_1.png){#fig-wind-turbine fig-alt="Wind Turbine" width="4in"}
 
 ## Required:
 

@@ -1,25 +1,8 @@
 ---
 title: 04.Plotting In Python
-date-modified: last-modified
-date-format: 'dd YYYY-MM-DD HH:mm'
-editor:
-    markdown: 
-        canonical: true
-execute:
-    echo: False
-fig-cap-location: top
-format:
-    html:
-      code-line-numbers: true
-      css: css/styles.css
-      fig-align: center
-      toc: true
-jupyter: python3
 ---
 
-```{python}
-from quarto_glu import *
-```
+{{< include _header.qmd >}}
 
 ## matplotlib
 

@@ -3,3 +3,4 @@ _*.*
 .*
 quarto_glu.py
 !_header.qmd
+/.quarto/

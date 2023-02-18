@@ -1,25 +1,8 @@
 ---
 title: 03.Python Primer
-date-modified: last-modified
-date-format: 'dd YYYY-MM-DD HH:mm'
-editor:
-    markdown: 
-        canonical: true
-execute:
-    echo: False
-fig-cap-location: top
-format:
-    html:
-      code-line-numbers: true
-      css: css/styles.css
-      fig-align: center
-      toc: true
-jupyter: python3
 ---
 
-```{python}
-from quarto_glu import *
-```
+{{< include _header.qmd >}}
 
 ```{python}
 #| eval: False
@@ -52,7 +35,7 @@ Thonny is an IDE (integrated development environment) for the Python programming
 
 Thonny's script panel is highlighted in @fig-script.
 
-![Thonny's Script Panel](img/thonny_script.gif){#fig-script fig-alt="Thonny's Script Panel" fig-align="left" width="4in"}
+![Thonny's Script Panel](img/thonny_script.gif){#fig-script fig-alt="Thonny's Script Panel" width="4in"}
 
 ::: callout-note
 The theme of Thonny shown in @fig-script may look different than the default theme. I've selected the dark theme by going to the toolbar at the top and selecting `Tools > Options...` Then the `Theme & Font` tab. Then you may choose your desired theme.
