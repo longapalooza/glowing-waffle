@@ -3586,7 +3586,7 @@ Note
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>pets <span class="op">=</span> {<span class="st">&#39;dog&#39;</span>, <span class="st">&#39;cat&#39;</span>, <span class="st">&#39;fish&#39;</span>, <span class="st">&#39;dog&#39;</span>}</span>
 <span id="cb63-2"><a href="#cb63-2"></a><span class="bu">print</span>(pets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{&#39;fish&#39;, &#39;cat&#39;, &#39;dog&#39;}</code></pre>
+<pre><code>{&#39;cat&#39;, &#39;fish&#39;, &#39;dog&#39;}</code></pre>
 </div>
 </div>
 <p>You can see from the code above that it removed the duplicate dog element. A set is the most restrictive type of Python collection. As mentioned, a set is unindexed, meaning particular elements may not be referred to individually as we did with the list and tuple. Like a tuple, a set has specific cases where it is beneficial to use it over a list. For example, say you wanted to make a collection of anyone who took any of the ENGR/ENGT 12X courses last year. Some students went through the ENGR/ENGT 12X course on track (taking 120, 121, and 122 in order), but some students didn’t pass a class and got off track. You could obtain rosters from all the ENGR/ENGT 12X course last year and put all the names in a set. The set would then tell you how many unique students were involved with the ENGR/ENGT 12X series last year.</p>
