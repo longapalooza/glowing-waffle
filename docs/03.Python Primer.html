@@ -2991,7 +2991,7 @@ vertical-align: -.125em;
   </script>
 
 
-<style type="text/css">.answer {text-align: right;}</style>
+<style type="text/css">.answer {text-align: right;}.table {font-size: 0.75rem;}.table tbody tr.odd {background-color: #F5F5F5;}.table tbody tr:hover {background-color: #D9EDFD;}</style>
 </head>
 
 <body>
@@ -3586,7 +3586,7 @@ Note
 <div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a>pets <span class="op">=</span> {<span class="st">&#39;dog&#39;</span>, <span class="st">&#39;cat&#39;</span>, <span class="st">&#39;fish&#39;</span>, <span class="st">&#39;dog&#39;</span>}</span>
 <span id="cb63-2"><a href="#cb63-2"></a><span class="bu">print</span>(pets)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{&#39;dog&#39;, &#39;fish&#39;, &#39;cat&#39;}</code></pre>
+<pre><code>{&#39;fish&#39;, &#39;cat&#39;, &#39;dog&#39;}</code></pre>
 </div>
 </div>
 <p>You can see from the code above that it removed the duplicate dog element. A set is the most restrictive type of Python collection. As mentioned, a set is unindexed, meaning particular elements may not be referred to individually as we did with the list and tuple. Like a tuple, a set has specific cases where it is beneficial to use it over a list. For example, say you wanted to make a collection of anyone who took any of the ENGR/ENGT 12X courses last year. Some students went through the ENGR/ENGT 12X course on track (taking 120, 121, and 122 in order), but some students didn’t pass a class and got off track. You could obtain rosters from all the ENGR/ENGT 12X course last year and put all the names in a set. The set would then tell you how many unique students were involved with the ENGR/ENGT 12X series last year.</p>
@@ -3767,10 +3767,7 @@ peanuts</code></pre>
 <div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>, <span class="dv">21</span>, <span class="dv">3</span>):</span>
 <span id="cb88-2"><a href="#cb88-2"></a>    <span class="bu">print</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
+<pre><code>0
 3
 6
 9
@@ -3786,27 +3783,27 @@ peanuts</code></pre>
 <h2 class="anchored" data-anchor-id="functions">Functions</h2>
 <p>User-defined functions in Python are created by the use of the <code>def</code> keyword. Shown below is an example of a user-defined function.</p>
 <div class="cell" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="kw">def</span> my_function1():</span>
-<span id="cb91-2"><a href="#cb91-2"></a>    <span class="bu">print</span>(<span class="st">&#39;What&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="kw">def</span> my_function1():</span>
+<span id="cb90-2"><a href="#cb90-2"></a>    <span class="bu">print</span>(<span class="st">&#39;What&#39;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The keyword <code>def</code> is followed by the function name, then an open and close parenthesis, and finally, a colon to define a function. Function names follow the same rules as variable names. <code>my_function1()</code> takes no arguments. That is why there is nothing between the opening and closing parentheses. If the function required some type of argument, the argument names would be inserted between the parentheses. An example of this is shown below.</p>
 <div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a><span class="kw">def</span> my_function2(a, b):</span>
-<span id="cb92-2"><a href="#cb92-2"></a>    <span class="cf">return</span> a <span class="op">+</span> b <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb91-1"><a href="#cb91-1"></a><span class="kw">def</span> my_function2(a, b):</span>
+<span id="cb91-2"><a href="#cb91-2"></a>    <span class="cf">return</span> a <span class="op">+</span> b <span class="op">**</span> <span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice the indentation in both functions. The indentation tells Python where the different blocks of code begin and end. In the above example, the keyword <code>return</code> is used. The <code>return</code> keyword is how a user-defined function gives value back. If no <code>return</code> keyword is used, the function returns a <code>None</code> value, a special data type in Python representing a nothing value.</p>
 <div class="cell" data-execution_count="50">
-<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a><span class="kw">def</span> my_function3(a, b):</span>
-<span id="cb93-2"><a href="#cb93-2"></a>    <span class="cf">if</span> a <span class="op">&gt;</span> b:</span>
-<span id="cb93-3"><a href="#cb93-3"></a>        <span class="cf">return</span> a <span class="op">+</span> b</span>
-<span id="cb93-4"><a href="#cb93-4"></a>    <span class="cf">elif</span> a <span class="op">&lt;</span> b:</span>
-<span id="cb93-5"><a href="#cb93-5"></a>        <span class="cf">return</span> b <span class="op">-</span> a</span>
-<span id="cb93-6"><a href="#cb93-6"></a>    <span class="cf">else</span>:</span>
-<span id="cb93-7"><a href="#cb93-7"></a>        <span class="cf">return</span> a <span class="op">*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a><span class="kw">def</span> my_function3(a, b):</span>
+<span id="cb92-2"><a href="#cb92-2"></a>    <span class="cf">if</span> a <span class="op">&gt;</span> b:</span>
+<span id="cb92-3"><a href="#cb92-3"></a>        <span class="cf">return</span> a <span class="op">+</span> b</span>
+<span id="cb92-4"><a href="#cb92-4"></a>    <span class="cf">elif</span> a <span class="op">&lt;</span> b:</span>
+<span id="cb92-5"><a href="#cb92-5"></a>        <span class="cf">return</span> b <span class="op">-</span> a</span>
+<span id="cb92-6"><a href="#cb92-6"></a>    <span class="cf">else</span>:</span>
+<span id="cb92-7"><a href="#cb92-7"></a>        <span class="cf">return</span> a <span class="op">*</span> b</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Shown above is another example of a function. It may be seen that there are multiple <code>return</code> keywords. Having multiple <code>return</code> statements is perfectly acceptable. The function will return the value based on the conditional statement. To use a user-defined function is similar to using any other function in Python. Several examples are shown below.</p>
 <div class="cell" data-execution_count="51">
-<div class="sourceCode cell-code" id="cb94"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb94-1"><a href="#cb94-1"></a><span class="bu">print</span>(my_function1())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a><span class="bu">print</span>(my_function1())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>What
 None</code></pre>
@@ -3826,25 +3823,25 @@ Note
 </div>
 </div>
 <div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb96"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb96-1"><a href="#cb96-1"></a><span class="bu">print</span>(my_function2(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a><span class="bu">print</span>(my_function2(<span class="dv">3</span>, <span class="dv">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>19</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb98"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb98-1"><a href="#cb98-1"></a><span class="bu">print</span>(my_function3(<span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb97"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb97-1"><a href="#cb97-1"></a><span class="bu">print</span>(my_function3(<span class="dv">3</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>9</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb100"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb100-1"><a href="#cb100-1"></a><span class="bu">print</span>(my_function3(<span class="dv">4</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb99"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb99-1"><a href="#cb99-1"></a><span class="bu">print</span>(my_function3(<span class="dv">4</span>, <span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>6</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb102"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb102-1"><a href="#cb102-1"></a><span class="bu">print</span>(my_function3(<span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb101"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb101-1"><a href="#cb101-1"></a><span class="bu">print</span>(my_function3(<span class="dv">2</span>, <span class="dv">3</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1</code></pre>
 </div>
@@ -3854,46 +3851,46 @@ Note
 <h2 class="anchored" data-anchor-id="strings">Strings</h2>
 <p>Strings are a Python data type that represents a character like value. Character like values are any alphanumeric value (i.e., A-z0-9), but they also include punctuation, spaces, tabs, etc. To indicate a string in Python, single <code>&#39;</code> or double <code>&quot;</code> quotes may be used. I personally prefer single quotes, but there is not an agreed-upon styling choice. Whatever you choose, be consistent. Shown below is an example of defining a string.</p>
 <div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb104"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb104-1"><a href="#cb104-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
-<span id="cb104-2"><a href="#cb104-2"></a>name <span class="op">=</span> <span class="st">&#39;Will&#39;</span></span>
-<span id="cb104-3"><a href="#cb104-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb103"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb103-1"><a href="#cb103-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
+<span id="cb103-2"><a href="#cb103-2"></a>name <span class="op">=</span> <span class="st">&#39;Will&#39;</span></span>
+<span id="cb103-3"><a href="#cb103-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Will</code></pre>
 </div>
 </div>
 <p>The string variables <code>greeting</code> and <code>name</code> are defined with single quotes, and the print statement combines all the strings through the use of concatenation. Concatenation is the method in which strings are “added”, “strung”, or “appended” to one another. For the above example, there strings a concatenated together, the string ‘Hello’, ’ ‘, and ’Will’.</p>
 <div class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb106"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb106-1"><a href="#cb106-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
-<span id="cb106-2"><a href="#cb106-2"></a>name <span class="op">=</span> <span class="st">&#39;Will&#39;</span></span>
-<span id="cb106-3"><a href="#cb106-3"></a>question <span class="op">=</span> <span class="st">&#39;How</span><span class="ch">\&#39;</span><span class="st">s it going?&#39;</span></span>
-<span id="cb106-4"><a href="#cb106-4"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&#39;. &#39;</span> <span class="op">+</span> question)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb105"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb105-1"><a href="#cb105-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
+<span id="cb105-2"><a href="#cb105-2"></a>name <span class="op">=</span> <span class="st">&#39;Will&#39;</span></span>
+<span id="cb105-3"><a href="#cb105-3"></a>question <span class="op">=</span> <span class="st">&#39;How</span><span class="ch">\&#39;</span><span class="st">s it going?&#39;</span></span>
+<span id="cb105-4"><a href="#cb105-4"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name <span class="op">+</span> <span class="st">&#39;. &#39;</span> <span class="op">+</span> question)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello Will. How&#39;s it going?</code></pre>
 </div>
 </div>
 <p>Shown above is another example of the use of strings. It is important to point out the string defined in the variable <code>question</code>. Occasionally when writing strings, the use of single or double quotes in the string itself will be necessary. If I did not include the backslash, Python would have interpreted the single quote as the closing single quote and would think the string is over, but this is not the case. A backslash is used to “escape” the following character to avoid the quote’s premature closing. Escapement is a method in which character values are interpreted literally as characters and not as program code. When Python sees a backslash in a string, it knows the next character (in this case, the single quote) is not a closing single quote but a single quote character that should be a part of the string. Another common mistake is shown below.</p>
 <div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb108"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb108-1"><a href="#cb108-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
-<span id="cb108-2"><a href="#cb108-2"></a>name <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb108-3"><a href="#cb108-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb107"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb107-1"><a href="#cb107-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
+<span id="cb107-2"><a href="#cb107-2"></a>name <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb107-3"><a href="#cb107-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-error">
 <pre><code>TypeError: can only concatenate str (not &quot;int&quot;) to str</code></pre>
 </div>
 </div>
 <p>The <code>name</code> variable is not a string in the example above. To Python, the variable <code>name</code> represents the number five and not a character value. In this case, it does not know how to concatenate a numeric value to a string. Mix matched data types like this may be fixed in one of two ways. The first way is shown below, enclosing the number 5 with single quotes.</p>
 <div class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb110"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb110-1"><a href="#cb110-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
-<span id="cb110-2"><a href="#cb110-2"></a>name <span class="op">=</span> <span class="st">&#39;5&#39;</span></span>
-<span id="cb110-3"><a href="#cb110-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb109"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb109-1"><a href="#cb109-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
+<span id="cb109-2"><a href="#cb109-2"></a>name <span class="op">=</span> <span class="st">&#39;5&#39;</span></span>
+<span id="cb109-3"><a href="#cb109-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello 5</code></pre>
 </div>
 </div>
 <p>The second way is to utilize the <code>str()</code> function. The <code>str()</code> function is a built-in function in Python that takes one argument. It tries to take that argument and convert it into a string. Using the <code>str()</code> function is shown below.</p>
 <div class="cell" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb112"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb112-1"><a href="#cb112-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
-<span id="cb112-2"><a href="#cb112-2"></a>name <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb112-3"><a href="#cb112-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> <span class="bu">str</span>(name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb111"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb111-1"><a href="#cb111-1"></a>greeting <span class="op">=</span> <span class="st">&#39;Hello&#39;</span></span>
+<span id="cb111-2"><a href="#cb111-2"></a>name <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb111-3"><a href="#cb111-3"></a><span class="bu">print</span>(greeting <span class="op">+</span> <span class="st">&#39; &#39;</span> <span class="op">+</span> <span class="bu">str</span>(name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hello 5</code></pre>
 </div>

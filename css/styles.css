@@ -1,3 +1,15 @@
 .answer {
     text-align: right;
 }
+
+.table {
+    font-size: 0.75rem;
+}
+
+.table tbody tr.odd {
+    background-color: #F5F5F5;
+}
+
+.table tbody tr:hover {
+    background-color: #D9EDFD;
+}

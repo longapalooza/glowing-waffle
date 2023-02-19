@@ -6,6 +6,8 @@ format:
 
 ## Quarto Examples
 
+[00.Tentative Schedule](00.Tentative Schedule.html)
+
 [01.Example 1](01.Example%201.html) ([source](https://github.com/longapalooza/glowing-waffle/blob/main/01.Example%201.qmd))
 
 [03.Python Primer](03.Python%20Primer.html) ([source](https://github.com/longapalooza/glowing-waffle/blob/main/03.Python%20Primer.qmd))
